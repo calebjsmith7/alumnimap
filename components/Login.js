@@ -11,7 +11,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { Button } from 'react-native-paper';
-import logo from '../assets/photos/alumnimap-logo-wht.png';
+import logo from '../assets/photos/mapgeneric.png';
 
 export default function Login(props){
     const [showRegistration, setShowRegistration] = useState(false);
@@ -30,10 +30,9 @@ export default function Login(props){
     return(
         <SafeAreaView style={{ alignContent: 'center', height: Dimensions.get('window').height, width: Dimensions.get('window').width, backgroundColor: '#20232c' }}>
             <View style={{marginTop: '40%', marginBottom: 'auto'}}>
-            <Image source={logo} style={{ height: 100, width: 300, resizeMode: 'contain', alignSelf: 'center'}} />
-            <Text style={{color: 'white', textAlign: 'center', fontSize: 25, fontWeight: '600', marginTop: 20, marginBottom: 20}}>BSSM Alumni Map</Text>
+            <Image source={logo} style={{ height: 150, width: 300, resizeMode: 'contain', alignSelf: 'center'}} />
             <TextInput
-                    style={{ height: 40, margin: 30, borderWidth: 1, padding: 10, backgroundColor: 'white', fontSize: 19, textAlign: 'center', marginBottom: 0, marginTop: 0 }}
+                    style={{ height: 40, margin: 30, borderWidth: 1, padding: 10, backgroundColor: 'white', fontSize: 19, textAlign: 'center', marginBottom: 0, marginTop: 30 }}
                     placeholder="Email"
                     autoComplete="email"
                     keyboardType="email-address"

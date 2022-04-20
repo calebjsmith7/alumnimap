@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import Loading from './components/Loading';
 import blklogo from './assets/photos/alumni-logo-blk.png';
-import whtlogo from './assets/photos/alumnimap-logo-wht.png';
+import whtlogo from './assets/photos/alumnimap_outermarker.png';
 import Login from './components/Login';
 import Home from './components/Home';
 import Settings from './components/Settings';
@@ -81,7 +81,6 @@ const App = () => {
             <SafeAreaView style={styles.container}>
               <View style={styles.container}>
                 <Image source={whtlogo} style={styles.header} />
-                <Text style={{fontWeight: '600', color: 'white'}}>BSSM Alumni Map</Text>
               </View>
             </SafeAreaView>
             <MyStack />
@@ -109,10 +108,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
-    marginBottom: '2%'
+    paddingBottom: '2%'
   },
   header: {
-    height: 60,
+    height: 100,
     width: 200,
     marginTop: 7,
     marginBottom: 7,
