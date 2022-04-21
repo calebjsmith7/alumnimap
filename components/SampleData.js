@@ -1,20 +1,26 @@
 export const Data = [
     {
-        latitude: 37.79825,
-        longitude: -122.4324,
+        latitude: 39.7581,
+        longitude: -104.9874,
         title: 'John Stewart',
-        description: '3rd Year. Healing Ministry, Dream Interpretation, Speaking.'
+        description: 'Healing Ministry, Dream Interpretation, Speaking.',
+        schoolYear: '3rd Year',
+        housing: 'Available'
     },
     {
-        latitude: 37.76825,
-        longitude: -122.4424,
+        latitude: 39.7337,
+        longitude: -104.9799,
         title: 'Jane Love',
-        description: '1st Year. Worship, Dance, Leadership.'
+        description: 'Worship, Dance, Leadership.',
+        schoolYear: '1st Year',
+        housing: 'Not Available'
     },
     {
-        latitude: 37.75825,
-        longitude: -122.4224,
+        latitude: 39.75825,
+        longitude: -104.9669,
         title: 'Jim Gomez',
-        description: '2nd Year. Prophetic, Dream Interpretation, Pastoring.'
+        description: 'Prophetic, Dream Interpretation, Pastoring.',
+        schoolYear: '2nd Year',
+        housing: 'Available'
     },
 ];

@@ -4,11 +4,11 @@ import {
     Text
 } from 'react-native';
 import Loading from './Loading';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Geolocation from '@react-native-community/geolocation';
 import { Data } from './SampleData';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import CustomCallout from './CustomCallout';
 
 export default function Home(){
 
@@ -28,12 +28,14 @@ export default function Home(){
 
                 Geolocation.getCurrentPosition(info => {
                     console.log('geolocation info is ' + JSON.stringify(info.coords));
+                    setHomeLocation({latitude: info.coords.latitude, longitude: info.coords.longitude});
                 });
-                setLoading(false);
+                
             }
             } catch (error) {
                 console.log(error);
             }
+            setLoading(false);
         }
         checkLocalForLocation();
     },[])
@@ -42,22 +44,26 @@ if(!loading){
         <View>
             <MapView
             style={{width: '100%', height: '100%'}}
-            initialRegion={{
+            region={{
              latitude: homeLocation.latitude,
              longitude: homeLocation.longitude,
              latitudeDelta: 0.0922,
              longitudeDelta: 0.0421,
            }}>
                 {Data.map((marker, index) => (
-                    
-                        <Marker
-                            key={index}
-                            coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
-                            title={marker.title}
-                            onPress={()=> console.log('pressed ' + marker.title)}
-                        />
-                    
-               ))}
+
+                    <Marker
+                        key={index}
+                        coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+                        //  title={marker.title}
+                        //   description={marker.description}
+                        onPress={() => console.log('pressed ' + marker.title)}>
+                        <Callout style={{width: 200, height: 'auto'}}>
+                            <CustomCallout {...marker} />
+                        </Callout>
+                    </Marker>
+
+                ))}
            </MapView>
         </View>
      );
