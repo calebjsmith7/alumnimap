@@ -19,6 +19,8 @@ import Home from './components/Home';
 import Settings from './components/Settings';
 import Profile from './components/Profile';
 import Events from './components/Events';
+import { eventData } from './components/SampleEventData';
+import EventTemplate from './components/EventTemplate';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -32,8 +34,12 @@ const App = () => {
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="MyTabs" component={MyTabs} />
-        <Stack.Screen name="MyAccount">{() => <MyAccount/>}</Stack.Screen>
         <Stack.Screen name="Login">{() => <Login/>}</Stack.Screen>
+        {eventData.map((item)=>{
+          return(
+            <Stack.Screen name={item.slug} component={EventTemplate} key={eventData.indexOf(item)} />
+          );
+        })}
       </Stack.Navigator>
     );
   }
