@@ -3,7 +3,8 @@ export const Data = [
         latitude: 39.7581,
         longitude: -104.9874,
         title: 'John Stewart',
-        description: 'Healing Ministry, Dream Interpretation, Speaking.',
+        gifting: ['Healing Room Ministry', 'Mystic', 'Speaking'],
+        calling: ['Church'],
         schoolYear: '3rd Year',
         housing: 'Available'
     },
@@ -11,7 +12,8 @@ export const Data = [
         latitude: 39.7337,
         longitude: -104.9799,
         title: 'Jane Love',
-        description: 'Worship, Dance, Leadership.',
+        gifting: ['Worship', 'Dance', 'Leadership'],
+        calling: ['Business'],
         schoolYear: '1st Year',
         housing: 'Not Available'
     },
@@ -19,7 +21,8 @@ export const Data = [
         latitude: 39.75825,
         longitude: -104.9669,
         title: 'Jim Gomez',
-        description: 'Prophetic, Dream Interpretation, Pastoring.',
+        gifting: ['Prophetic', 'Mystic', 'Pastoring'],
+        calling: ['Education'],
         schoolYear: '2nd Year',
         housing: 'Available'
     },

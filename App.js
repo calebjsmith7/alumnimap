@@ -21,6 +21,7 @@ import Profile from './components/Profile';
 import Events from './components/Events';
 import { eventData } from './components/SampleEventData';
 import EventTemplate from './components/EventTemplate';
+import { Data } from './components/SampleData';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -29,6 +30,28 @@ const App = () => {
 
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(false);
+  const [combinedList, setCombinedList] = useState([]);
+  const [postSortedUserList, setPostSortedUserList] = useState([...Data]);
+
+  // sorting for loop
+  const sortIt = (item) => {
+    let falseFlag = 0;
+    for(let i = 0; i < combinedList.length; i++){
+      if(!item.description.includes(combinedList[i])){
+        falseFlag++;
+        return false;
+      }  
+    }
+    if(falseFlag == 0){
+      return true;
+    }
+  }
+
+  // updating combined list for settings page
+  const updateList = (item) => {
+    setCombinedList(item);
+  }
+
 
   function MyStack() {
     return (
@@ -54,7 +77,7 @@ const App = () => {
           tabBarIcon: ({ focused }) => (
             <Icon name={focused ? "navigate" : "navigate-outline"} color={focused ? '#6e7f80' : "#d3d3d3"} size={30} />
           ),
-        }}>{() => <Home/>}</Tab.Screen>
+        }}>{()=><Home comboList={combinedList} postSortedList={postSortedUserList}/>}</Tab.Screen>
          <Tab.Screen name="Events" options={{
           tabBarLabel: 'EVENTS',
           tabBarIcon: ({ focused }) => (
@@ -72,7 +95,7 @@ const App = () => {
           tabBarIcon: ({ focused }) => (
             <Icon name={focused ? "settings" : "settings-outline"} color={focused ? '#6e7f80' : "#d3d3d3"} size={30} />
           ),
-        }}>{() => <Settings/>}</Tab.Screen>
+        }}>{() => <Settings comboList={combinedList} setComboList={updateList}/>}</Tab.Screen>
        
 
 

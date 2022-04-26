@@ -10,18 +10,44 @@ import Geolocation from '@react-native-community/geolocation';
 import { Data } from './SampleData';
 import CustomCallout from './CustomCallout';
 
-export default function Home(){
+export default function Home(props){
 
     const [homeLocation, setHomeLocation] = useState({ latitude: 37.78825, longitude: -122.4324});
     const [loading, setLoading] = useState(true);
+    const [bigList, setBigList] = useState([...Data]);
+    const [subscriptionlist, setsubscriptionlist] = useState(props.comboList);
+
+    let listOfPoints = Data;
+
+    const sortIt = (item) => {
+        let falseFlag = 0;
+        for (let i = 0; i < props.comboList.length; i++) {
+            if (!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i])) {
+                falseFlag++;
+                return false;
+            }
+        }
+        if (falseFlag == 0) {
+            return true;
+        }
+    }
+
+
+    useEffect(() => {
+        let results = bigList.filter(sortIt);
+        setBigList(results); 
+    }, [subscriptionlist]);
+
     // check local storage for location. if not saved, get location for map initial region then save in local for further use
-    useEffect(()=>{
+    useEffect(() => {
         const checkLocalForLocation = async () => {
             try {
                 let value = await AsyncStorage.getItem('location');
             if(value !== null){
                 // value previously stored
-
+                console.log('value previously stored');
+                let data = JSON.parse(value);
+                setHomeLocation({latitude: JSON.parse(data.latitude), longitude: JSON.parse(data.longitude)});
             }
             else if(!value){
                 // value not previously stored
@@ -29,7 +55,9 @@ export default function Home(){
                 Geolocation.getCurrentPosition(info => {
                     console.log('geolocation info is ' + JSON.stringify(info.coords));
                     setHomeLocation({latitude: info.coords.latitude, longitude: info.coords.longitude});
+                    AsyncStorage.setItem('location', JSON.stringify(info.coords));
                 });
+
                 
             }
             } catch (error) {
@@ -50,20 +78,23 @@ if(!loading){
              latitudeDelta: 0.0922,
              longitudeDelta: 0.0421,
            }}>
-                {Data.map((marker, index) => (
-
+                {listOfPoints.filter(sortIt).map((marker, index) => {
+              
+              
+                    return (
+                    
                     <Marker
                         key={index}
                         coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
                         //  title={marker.title}
                         //   description={marker.description}
                         onPress={() => console.log('pressed ' + marker.title)}>
-                        <Callout style={{width: 200, height: 'auto'}}>
+                        <Callout style={{minWidth: 200, width: 'auto', height: 'auto'}}>
                             <CustomCallout {...marker} />
                         </Callout>
                     </Marker>
 
-                ))}
+                )})}
            </MapView>
         </View>
      );
