@@ -22,6 +22,7 @@ import Events from './components/Events';
 import { eventData } from './components/SampleEventData';
 import EventTemplate from './components/EventTemplate';
 import { Data } from './components/SampleData';
+import Person from './components/person';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -61,6 +62,11 @@ const App = () => {
         {eventData.map((item)=>{
           return(
             <Stack.Screen name={item.slug} component={EventTemplate} key={eventData.indexOf(item)} />
+          );
+        })}
+        {Data.map((item)=>{
+          return(
+            <Stack.Screen name={item.id} component={Person} key={eventData.indexOf(item)} />
           );
         })}
       </Stack.Navigator>

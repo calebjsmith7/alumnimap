@@ -9,20 +9,22 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Geolocation from '@react-native-community/geolocation';
 import { Data } from './SampleData';
 import CustomCallout from './CustomCallout';
-
+import uuid from 'react-native-uuid';
+import { useNavigation } from '@react-navigation/native';
 export default function Home(props){
 
     const [homeLocation, setHomeLocation] = useState({ latitude: 37.78825, longitude: -122.4324});
     const [loading, setLoading] = useState(true);
     const [bigList, setBigList] = useState([...Data]);
     const [subscriptionlist, setsubscriptionlist] = useState(props.comboList);
-
+    const navigation = useNavigation();
     let listOfPoints = Data;
+
 
     const sortIt = (item) => {
         let falseFlag = 0;
         for (let i = 0; i < props.comboList.length; i++) {
-            if (!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i])) {
+            if (!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i])) {
                 falseFlag++;
                 return false;
             }
@@ -86,10 +88,9 @@ if(!loading){
                     <Marker
                         key={index}
                         coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
-                        //  title={marker.title}
-                        //   description={marker.description}
-                        onPress={() => console.log('pressed ' + marker.title)}>
-                        <Callout style={{minWidth: 200, width: 'auto', height: 'auto'}}>
+                        >
+                        <Callout style={{minWidth: 200, width: 'auto', height: 'auto'}} onPress={()=> navigation.navigate({
+            name: marker.id})}>
                             <CustomCallout {...marker} />
                         </Callout>
                     </Marker>
