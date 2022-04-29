@@ -69,6 +69,7 @@ const App = () => {
             <Stack.Screen name={item.id} component={Person} key={eventData.indexOf(item)} />
           );
         })}
+        
       </Stack.Navigator>
     );
   }
@@ -95,7 +96,7 @@ const App = () => {
           tabBarIcon: ({ focused }) => (
             <Icon name={focused ? "person" : "person-outline"} color={focused ? '#6e7f80' : "#d3d3d3"} size={30} />
           ),
-        }}>{() => <Profile/>}</Tab.Screen>
+        }}>{() => <Profile theUser={user}/>}</Tab.Screen>
         <Tab.Screen name="Settings" options={{
           tabBarLabel: 'SETTINGS',
           tabBarIcon: ({ focused }) => (

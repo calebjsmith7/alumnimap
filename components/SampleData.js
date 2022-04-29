@@ -8,7 +8,8 @@ export const Data = [
         schoolYear: '3rd Year',
         housing: ['Daytime Visitors'],
         minTeam: ['Transition Mentor', 'SOZO Ministry', 'Coaching Ministry'],
-        id: '726c1129-f23b-4a97-8d76-3b78e471c23f'
+        id: '726c1129-f23b-4a97-8d76-3b78e471c23f',
+        ministry: false
     },
     {
         latitude: 39.7337,
@@ -19,7 +20,8 @@ export const Data = [
         schoolYear: '1st Year',
         housing: ['Daytime Visitors', 'Couch Space', 'Other'],
         minTeam: ['Healing Room Ministry', 'Prophetic Ministry', 'Other'],
-        id: 'c8609c21-0222-41c2-adeb-53ce043303ab'
+        id: 'c8609c21-0222-41c2-adeb-53ce043303ab',
+        ministry: false
     },
     {
         latitude: 39.75825,
@@ -30,6 +32,15 @@ export const Data = [
         schoolYear: '2nd Year',
         housing: ['Daytime Visitors', 'Guest Room', 'Floor Space'],
         minTeam: ['Transition Mentor', 'SOZO Ministry', 'Prophetic Ministry'],
-        id: '59759a68-fe00-47a5-b8d4-af8c1a042c04'
+        id: '59759a68-fe00-47a5-b8d4-af8c1a042c04',
+        ministry: false
+    },
+    {
+        latitude: 39.71925,
+        longitude: -105.0139,
+        title: 'Jubilee Fellowship Church',
+        id: '59759a68-fe00-47a5-b8d4-af8c1a042c03',
+        ministry: true,
+        website: 'https://jfc.org'
     },
 ];

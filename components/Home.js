@@ -11,6 +11,7 @@ import { Data } from './SampleData';
 import CustomCallout from './CustomCallout';
 import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
+
 export default function Home(props){
 
     const [homeLocation, setHomeLocation] = useState({ latitude: 37.78825, longitude: -122.4324});
@@ -20,7 +21,7 @@ export default function Home(props){
     const navigation = useNavigation();
     let listOfPoints = Data;
 
-
+// sort function for people
     const sortIt = (item) => {
         let falseFlag = 0;
         for (let i = 0; i < props.comboList.length; i++) {
@@ -29,11 +30,29 @@ export default function Home(props){
                 return false;
             }
         }
+        // no churches in people markers
+        if(item.ministry === true){
+            return false;
+            falseFlag++;
+        }
         if (falseFlag == 0) {
             return true;
         }
     }
+// sort function for ministries
 
+const sortMins = (item) => {
+    let falseFlag = 0;
+   
+    // no churches in people markers
+    if(item.ministry === false){
+        return false;
+        falseFlag++;
+    }
+    if (falseFlag == 0) {
+        return true;
+    }
+}
 
     useEffect(() => {
         let results = bigList.filter(sortIt);
@@ -81,22 +100,34 @@ if(!loading){
              longitudeDelta: 0.0421,
            }}>
                 {listOfPoints.filter(sortIt).map((marker, index) => {
-              
-              
                     return (
-                    
-                    <Marker
-                        key={index}
-                        coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
-                        >
-                        <Callout style={{minWidth: 200, width: 'auto', height: 'auto'}} onPress={()=> navigation.navigate({
-            name: marker.id})}>
-                            <CustomCallout {...marker} />
-                        </Callout>
-                    </Marker>
-
-                )})}
-           </MapView>
+                        <Marker
+                            key={index}
+                            coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}>
+                            <Callout style={{ minWidth: 200, width: 'auto', height: 'auto' }} onPress={() => navigation.navigate({
+                                name: marker.id
+                            })}>
+                                <CustomCallout {...marker} />
+                            </Callout>
+                        </Marker>
+                    )
+                })}
+                {listOfPoints.filter(sortMins).map((marker, index) => {
+                    return (
+                        <Marker
+                            key={index}
+                            coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+                            image={{uri: 'churchLogo'}}
+                            >
+                            <Callout style={{ minWidth: 200, width: 'auto', height: 'auto' }} onPress={() => navigation.navigate({
+                                name: marker.id
+                            })}>
+                                <CustomCallout {...marker} />
+                            </Callout>
+                        </Marker>
+                    )
+                })}
+            </MapView>
         </View>
      );
 } else {
