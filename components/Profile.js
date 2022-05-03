@@ -5,22 +5,29 @@ import {
     StyleSheet,
     ScrollView,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Profile(props) {
 
-
+const [bgColor, setBgColor] = useState({header: '#174c4f', main: '#1e2427'});
 
     return (
         <View style={{ height: 'auto' }}>
-            <View style={{ backgroundColor: '#174c4f', paddingTop: 13, paddingBottom: 13 }}>
-                <Text style={{ fontSize: 30, marginLeft: 20, color: '#FDFCFA' }}>{props.theUser ? props.theUser.name : null}</Text>
-                <Divider style={{ backgroundColor: '#FDFCFA', width: '50%', marginLeft: 20, marginTop: 5 }} />
-                <Text style={{ marginLeft: 20, margin: 8, fontSize: 24, color: '#FDFCFA' }}>{props.theUser ? props.theUser.schoolYear : null}</Text>
+            <View style={{display: 'flex', flexDirection: 'row', backgroundColor: bgColor.header, width: '100%', paddingTop: 13, paddingBottom: 13, justifyContent: 'space-between'}}>
+            <View style={{ backgroundColor: bgColor.header }}>
+                    <Text style={{ fontSize: 30, marginLeft: 20, color: '#FDFCFA' }}>{props.theUser ? props.theUser.name : null}</Text>
+                    <Divider style={{ backgroundColor: '#FDFCFA', width: '50%', marginLeft: 20, marginTop: 5 }} />
+                    <Text style={{ marginLeft: 20, margin: 8, fontSize: 24, color: '#FDFCFA' }}>{props.theUser ? props.theUser.schoolYear : null}</Text>
+                </View>
+                <TouchableOpacity style={{ alignSelf: 'center', marginRight: 40, marginTop: 'auto', marginBottom: 'auto' }} onPress={()=> bgColor.header == '#174c4f' ? setBgColor({header: 'navy', main: 'darkgrey'}) : setBgColor({header: '#174c4f', main: '#1e2427'})}>
+                    <Icon name={"pencil"} color={'#FDFCFA'} size={25} />
+                </TouchableOpacity>
+
             </View>
-            <View style={{ backgroundColor: '#1e2427', height: '100%' }}>
-                <ScrollView style={{ backgroundColor: '#1e2427' }}>
+            <View style={{ backgroundColor: bgColor.main, height: '100%' }}>
+                <ScrollView style={{ backgroundColor: bgColor.main }}>
                     <View style={{ display: 'flex', flexDirection: 'row', marginLeft: 20, marginTop: 10, marginBottom: 5, marginRight: 20, height: 'auto' }}>
                         <Icon name={"checkbox"} color={'#6e7f80'} size={40}  />
                         <Text style={{ marginLeft: 10, margin: 8, fontSize: 20, color: '#FDFCFA', fontWeight: "600", flex: 1, }}>Gifting: {props.theUser ? props.theUser.gifting.map((gift)=> gift + ', ') : null}</Text>
