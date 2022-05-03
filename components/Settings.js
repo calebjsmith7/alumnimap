@@ -12,6 +12,7 @@ export default function Settings(props) {
     const listOfCallings = ['Church', 'Education', 'Media', 'Family', 'Arts', 'Politics', 'Business', 'Medical', 'Sports', 'Science', 'Technology'];
     const listOfGuestHostings = ['Daytime Visitors', 'Couch Space', 'Floor Space', 'Guest Room', 'Other'];
     const listOfMinistryTeams = ['Transition Mentor', 'Healing Room Ministry', 'Prophetic Ministry', 'SOZO Ministry', 'Coaching Ministry', 'Other'];
+    const listOfChurchVisible = ['Show Alumni Only', 'Show Ministries Only'];
     
 
 
@@ -53,6 +54,15 @@ export default function Settings(props) {
             <View style={{marginLeft: '5%', height: 'auto', maxHeight: 250, flexWrap: 'wrap', marginBottom: '20%'}}>
                 {listOfMinistryTeams.map((item)=>{
                     let index = listOfMinistryTeams.indexOf(item);
+                    return(
+                        <Checkboxes name={item} list={props.comboList} setList={props.setComboList} key={index} margin={'5%'}/>
+                    );
+                })}
+            </View>
+            <Text style={{ textAlign: 'left', margin: '3%', marginLeft: '5%', fontSize: 25, color: '#174c4f' }}>Sort by Type</Text>
+            <View style={{marginLeft: '5%', height: 'auto', maxHeight: 250, flexWrap: 'wrap', marginBottom: '20%'}}>
+                {listOfChurchVisible.map((item)=>{
+                    let index = listOfChurchVisible.indexOf(item);
                     return(
                         <Checkboxes name={item} list={props.comboList} setList={props.setComboList} key={index} margin={'5%'}/>
                     );

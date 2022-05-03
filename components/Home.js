@@ -25,15 +25,25 @@ export default function Home(props){
     const sortIt = (item) => {
         let falseFlag = 0;
         for (let i = 0; i < props.comboList.length; i++) {
-            if (!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i])) {
+            if(item.ministry == false){
+                if (!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i]) && !props.comboList[i] == 'Show Alumni Only') {
+                    falseFlag++;
+                    return false;
+                }
+            } else {
+                falseFlag++;
+                return false;
+            } 
+            if(props.comboList[i] == 'Show Ministries Only'){
                 falseFlag++;
                 return false;
             }
         }
         // no churches in people markers
         if(item.ministry === true){
-            return false;
             falseFlag++;
+            return false;
+            
         }
         if (falseFlag == 0) {
             return true;
@@ -46,8 +56,14 @@ const sortMins = (item) => {
    
     // no churches in people markers
     if(item.ministry === false){
-        return false;
         falseFlag++;
+        return false;
+    }
+    for(let i = 0; i < props.comboList.length; i++){
+        if(props.comboList[i] == 'Show Alumni Only'){
+            falseFlag++;
+            return false;
+        }
     }
     if (falseFlag == 0) {
         return true;
