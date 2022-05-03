@@ -3,15 +3,13 @@ import {
     Text,
     View,
     StyleSheet,
-    Dimensions,
     ScrollView
 } from 'react-native';
 import { eventData } from './SampleEventData';
 import BackButton from './backButton';
 
 export default function EventTemplate({ route }) {
-    let id;
-    let max = eventData.length;
+   
     return (
         <View style={{ height: '100%', width: '100%' }}>
             <BackButton />

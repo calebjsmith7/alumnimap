@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { 
     View,
     Text,
     ScrollView
 } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Checkboxes from './Checkbox';
 
 export default function Settings(props) {

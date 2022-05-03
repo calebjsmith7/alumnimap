@@ -3,15 +3,9 @@ import {
     Text,
     View,
     StyleSheet,
-    Dimensions,
     ScrollView,
-    TextInput,
-    Alert,
-    Linking
 } from 'react-native';
-import { Data } from './SampleData';
-import BackButton from './backButton';
-import { Button, Divider } from 'react-native-paper';
+import { Divider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Profile(props) {

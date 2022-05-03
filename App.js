@@ -7,12 +7,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
   Image
 } from 'react-native';
-import Loading from './components/Loading';
-import blklogo from './assets/photos/alumni-logo-blk.png';
 import whtlogo from './assets/photos/alumnimap_outermarker.png';
 import Login from './components/Login';
 import Home from './components/Home';

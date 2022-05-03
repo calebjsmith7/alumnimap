@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { 
     View,
-    Text
 } from 'react-native';
 import Loading from './Loading';
 import MapView, { Marker, Callout } from 'react-native-maps';
@@ -9,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Geolocation from '@react-native-community/geolocation';
 import { Data } from './SampleData';
 import CustomCallout from './CustomCallout';
-import uuid from 'react-native-uuid';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Home(props){

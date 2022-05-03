@@ -6,8 +6,6 @@ import {
     SafeAreaView,
     TextInput,
     Image,
-    Alert,
-    ActivityIndicator,
     TouchableOpacity
 } from 'react-native';
 import { Button } from 'react-native-paper';
