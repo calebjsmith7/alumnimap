@@ -50,6 +50,9 @@ const App = () => {
     setCombinedList(item);
   }
 
+  const updateUser = (item)=> {
+    setUser(item);
+  }
 
   function MyStack() {
     return (
@@ -74,6 +77,7 @@ const App = () => {
 
 
   function MyTabs() {
+    const [uselessUpdate, setUselessUpdate] = useState(false);
     return (
       <Tab.Navigator initialRouteName={Home} screenOptions={{ tabBarStyle: { backgroundColor: '#1e2427' }, tabBarBadgeStyle: { color: '#d3d3d3' }, headerShown: false, tabBarActiveTintColor: '#6e7f80', tabBarInactiveTintColor: 'grey' }}>
         <Tab.Screen name="Map" options={{
@@ -93,7 +97,7 @@ const App = () => {
           tabBarIcon: ({ focused }) => (
             <Icon name={focused ? "person" : "person-outline"} color={focused ? '#6e7f80' : "#d3d3d3"} size={30} />
           ),
-        }}>{() => <Profile theUser={user}/>}</Tab.Screen>
+        }}>{() => <Profile theUser={user} setTheUser={updateUser} setUseless={setUselessUpdate} useless={uselessUpdate}/>}</Tab.Screen>
         <Tab.Screen name="Settings" options={{
           tabBarLabel: 'SETTINGS',
           tabBarIcon: ({ focused }) => (

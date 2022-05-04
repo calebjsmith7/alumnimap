@@ -58,7 +58,7 @@ export default function Login(props){
                     <Button mode="contained" style={{ width: 110, alignSelf: 'flex-start', marginTop: '5%' }} onPress={() => setShowRegistration(true)}>
                         Register
                     </Button>
-                    <Button mode="contained" style={{ width: 110, alignSelf: 'flex-end', marginTop: '5%' }} onPress={() => { props.setTheUser({name: 'Caleb Smith', email: 'calebjoelsmith@gmail.com', gifting: ['Prophetic', 'Worship', 'Teaching', 'Healing'], minTeam: ['Healing Room Ministry', 'Prophetic Ministry', 'SOZO Ministry'], housing: ['Daytime Visitors', 'Other'], schoolYear: '1st Year', calling: 'Church' }) }} color='#2196F3'>
+                    <Button mode="contained" style={{ width: 110, alignSelf: 'flex-end', marginTop: '5%' }} onPress={() => { props.setTheUser({name: 'Caleb Smith', email: 'calebjoelsmith@gmail.com', gifting: ['Prophetic', 'Worship', 'Teaching', 'Healing'], minTeam: ['Healing Room Ministry', 'Prophetic Ministry', 'SOZO Ministry'], housing: ['Daytime Visitors', 'Other'], schoolYear: '1st Year', calling: ['Church'] }) }} color='#2196F3'>
                         Login
                     </Button>
                 </View>
