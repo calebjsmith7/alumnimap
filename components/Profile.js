@@ -81,7 +81,7 @@ export default function Profile(props) {
         <View style={{ height: 'auto' }}>
             
             <View style={{ display: 'flex', flexDirection: 'row', backgroundColor: bgColor.header, width: '100%', paddingTop: 13, paddingBottom: 13, justifyContent: 'space-around' }}>
-                <TouchableOpacity style={{ backgroundColor: 'pink', marginLeft: 5, borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2, backgroundColor: '#1e2427', width: Dimensions.get('window').width / 5, height: Dimensions.get('window').height / 11, alignContent: 'center', justifyContent: 'center', overflow: 'hidden' }} onPress={()=>{setShowPhotoMenu(!showPhotoMenu)}}>
+                <TouchableOpacity style={{ backgroundColor: 'pink', marginLeft: 5, borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2, backgroundColor: '#1e2427', width: Dimensions.get('window').width / 4.5, height: Dimensions.get('window').height / 10, alignContent: 'center', justifyContent: 'center', overflow: 'hidden', borderColor: '#ffffff', borderWidth: 2.5 }} onPress={()=>{setShowPhotoMenu(!showPhotoMenu)}}>
                 <Image style={{height: '100%', width: '100%', alignSelf: 'center', marginTop: profilePhoto ? 0 : 30}} source={profilePhoto ? {uri: profilePhoto} : defaultImage}/>
                 </TouchableOpacity>
                 <View style={{ backgroundColor: bgColor.header, alignSelf: 'center' }}>
