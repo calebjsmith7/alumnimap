@@ -49,7 +49,7 @@ export default function Settings(props) {
                     );
                 })}
             </View>
-            <Text style={{ textAlign: 'left', margin: '3%', marginLeft: '5%', fontSize: 25, color: '#174c4f' }}>Sort by Ministry Team Trained</Text>
+            <Text style={{ textAlign: 'left', margin: '3%', marginLeft: '5%', fontSize: 25, color: '#174c4f' }}>Get Ministry</Text>
             <View style={{marginLeft: '5%', height: 'auto', maxHeight: 250, flexWrap: 'wrap', marginBottom: '20%'}}>
                 {listOfMinistryTeams.map((item)=>{
                     let index = listOfMinistryTeams.indexOf(item);
