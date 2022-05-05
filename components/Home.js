@@ -21,31 +21,42 @@ export default function Home(props){
 
 // sort function for people
     const sortIt = (item) => {
-        let falseFlag = 0;
-        for (let i = 0; i < props.comboList.length; i++) {
+       
+     /*   for (let i = 0; i < props.comboList.length; i++) {
             if(item.ministry == false){
-                if (!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i]) && !props.comboList[i] == 'Show Alumni Only') {
-                    falseFlag++;
+                if ((!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i])) || props.comboList[i] != 'Show Alumni Only') {
+                   
                     return false;
                 }
             } else {
-                falseFlag++;
+                
                 return false;
             } 
             if(props.comboList[i] == 'Show Ministries Only'){
-                falseFlag++;
+                
                 return false;
             }
         }
         // no churches in people markers
         if(item.ministry === true){
-            falseFlag++;
+            
             return false;
             
         }
-        if (falseFlag == 0) {
-            return true;
+        return true;*/
+
+        if(props.comboList.includes('Show Ministries Only')){
+            return false;
+        } 
+        if(item.ministry === true){
+            return false;
         }
+        for (let i = 0; i < props.comboList.length; i++) {
+            if(!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i])){
+                return false;
+            }
+        }
+        return true;
     }
 // sort function for ministries
 
