@@ -27,9 +27,16 @@ export default function Profile(props) {
     const listOfGuestHostings = ['Daytime Visitors', 'Couch Space', 'Floor Space', 'Guest Room', 'Other'];
     const listOfMinistryTeams = ['Transition Mentor', 'Healing Room Ministry', 'Prophetic Ministry', 'SOZO Ministry', 'Coaching Ministry', 'Other'];
 
+    let options = {
+        mediaType: 'photo',
+        includeBase64: true
+    };
+
+
     const addOrRemoveAttribute = (value, type, category) => {
         let localType = type;
         let localUser = props.theUser;
+        
        
         // if user includes attribute that has been clicked
         if (type.includes(value)) {
@@ -58,9 +65,10 @@ export default function Profile(props) {
         } else {
             if(action == 'pick'){
                 console.log(action);
-                let pickResult = await launchImageLibrary(mediaType='photo',);
-                setProfilePhoto(pickResult.assets[0].uri);
-                console.log(profilePhoto);
+                let pickResult = await launchImageLibrary(options);
+               // setProfilePhoto(pickResult.assets[0].uri);
+                setProfilePhoto('data:image/png;base64,' + pickResult.assets[0].base64);
+               // console.log(pickResult.assets[0].base64);
                 setShowPhotoMenu(false);
             }
         }
