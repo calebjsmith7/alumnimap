@@ -21,30 +21,7 @@ export default function Home(props){
 
 // sort function for people
     const sortIt = (item) => {
-       
-     /*   for (let i = 0; i < props.comboList.length; i++) {
-            if(item.ministry == false){
-                if ((!item.gifting.includes(props.comboList[i]) && !item.calling.includes(props.comboList[i]) && !item.housing.includes(props.comboList[i]) && !item.minTeam.includes(props.comboList[i])) || props.comboList[i] != 'Show Alumni Only') {
-                   
-                    return false;
-                }
-            } else {
-                
-                return false;
-            } 
-            if(props.comboList[i] == 'Show Ministries Only'){
-                
-                return false;
-            }
-        }
-        // no churches in people markers
-        if(item.ministry === true){
-            
-            return false;
-            
-        }
-        return true;*/
-
+    
         if(props.comboList.includes('Show Ministries Only')){
             return false;
         } 
